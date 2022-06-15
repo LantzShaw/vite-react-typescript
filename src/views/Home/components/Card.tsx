@@ -1,4 +1,4 @@
-import { FC, memo, ReactElement, useEffect, useState } from 'react'
+import { type FC, type ReactElement, memo, useEffect, useState } from 'react'
 import { Button } from 'antd'
 
 interface CardProps {

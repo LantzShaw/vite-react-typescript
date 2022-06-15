@@ -1,13 +1,14 @@
-import { FC, ReactElement, useContext, useEffect, useState, useRef } from 'react'
+import { type FC, type ReactElement, useContext, useEffect, useState, useRef } from 'react'
 import { Button, DatePicker, Input, Form, Checkbox, Row, Col, Grid } from 'antd'
-import moment from 'moment'
+import moment, { type Moment } from 'moment'
 
 import type { DatePickerProps, RangePickerProps } from 'antd/es/date-picker'
-import type { Moment } from 'moment'
+// import type { Moment } from 'moment'
 
 import NotificationContext from '@/contexts/notification-context'
 import Card from './components/Card'
 import UserForm from './components/UserForm'
+import BaseTable from './components/BaseTable'
 
 interface IProps {}
 
@@ -130,6 +131,12 @@ const Home: FC<IProps> = (props): ReactElement => {
               </Button>
             </Form.Item>
           </Form>
+        </Col>
+      </Row>
+
+      <Row>
+        <Col span={20}>
+          <BaseTable />
         </Col>
       </Row>
     </>
