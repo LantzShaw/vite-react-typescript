@@ -10,7 +10,16 @@
  */
 
 import { Button } from 'antd'
-import { useCallback, useEffect, useMemo, useState, type FC, type ReactElement } from 'react'
+import { debounce, clone, throttle } from 'lodash-es'
+import {
+  ChangeEvent,
+  useCallback,
+  useEffect,
+  useMemo,
+  useState,
+  type FC,
+  type ReactElement,
+} from 'react'
 
 import BusinessCard from './components/BusinessCard'
 
@@ -18,6 +27,7 @@ interface IProps {}
 
 const Profile: FC<IProps> = (props): ReactElement => {
   const [name, setName] = useState('Lantz Shaw')
+  // const [age, setAge] = useState(18)
 
   console.log('----------------Profile component is rendering----------------')
 
@@ -40,8 +50,29 @@ const Profile: FC<IProps> = (props): ReactElement => {
     setName('Jack Shaw')
   }
 
+  const inputChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
+    const { value } = e.target
+
+    debounceSearch(value)
+  }
+
+  const onSearch = (value: string) => {
+    console.log('--------------search value--------------', value)
+  }
+
+  // const debounceSearch = useCallback(debounce(onSearch, 300), [])
+
+  const debounceSearch = useCallback(
+    debounce((value: string) => {
+      console.log('--------------search value--------------', value)
+    }, 300),
+    []
+  )
+
   return (
     <>
+      <input type="text" onChange={inputChangeHandler} />
+
       <BusinessCard
         name={name}
         gender="male"
