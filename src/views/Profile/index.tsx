@@ -1,13 +1,12 @@
 /************************************************
  *
- * 注意:
+ * NOTE:
  *
  *  父组件外层的log信息比子组件外层log更先打印，
  *
  * 但是useEffect中的log，则是子组件更先打印，在打印父组件的
  *
- * **********************************************
- */
+ ***********************************************/
 
 import { Button } from 'antd'
 import { debounce, clone, throttle } from 'lodash-es'
@@ -60,14 +59,14 @@ const Profile: FC<IProps> = (props): ReactElement => {
     console.log('--------------search value--------------', value)
   }
 
-  // const debounceSearch = useCallback(debounce(onSearch, 300), [])
+  const debounceSearch = useCallback(debounce(onSearch, 300), [])
 
-  const debounceSearch = useCallback(
-    debounce((value: string) => {
-      console.log('--------------search value--------------', value)
-    }, 300),
-    []
-  )
+  // const debounceSearch = useCallback(
+  //   debounce((value: string) => {
+  //     console.log('--------------search value--------------', value)
+  //   }, 300),
+  //   []
+  // )
 
   return (
     <>
@@ -80,7 +79,6 @@ const Profile: FC<IProps> = (props): ReactElement => {
         nickname={nickname}
         onEdit={editHandler}
       />
-
       <Button onClick={changeHandler}>Change Some Theing</Button>
     </>
   )
