@@ -6,4 +6,6 @@ const SignIn = lazy(() => import('@/views/SignIn'))
 
 const SignUp = lazy(() => import('@/views/SignUp'))
 
-export { Home, SignIn, SignUp }
+const User = lazy(() => import('@/views/User'))
+
+export { Home, SignIn, SignUp, User }
